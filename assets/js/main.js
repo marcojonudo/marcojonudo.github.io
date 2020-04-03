@@ -8,3 +8,9 @@ $('#header').mousemove((event) => {
     $('#header-image').css('margin-left', `${moveX}px`);
     $('#header-image').css('margin-top', `${moveY}px`);
 });
+
+$(window).on('load', () => {
+    setTimeout(() => {
+        $('body').removeClass('preload');
+    }, 200);
+});

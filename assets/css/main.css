@@ -1,12 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@-webkit-keyframes border-around {
+  0% {
+    background-size: 0 1px, 1px 0, 0 1px, 1px 0;
+  }
+  25% {
+    background-size: 100% 1px, 1px 0, 0 1px, 1px 0;
+  }
+  50% {
+    background-size: 100% 1px, 1px 100%, 0 1px, 1px 0;
+  }
+  75% {
+    background-size: 100% 1px, 1px 100%, 100% 1px, 1px 0;
+  }
+  100% {
+    background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+  }
+}
+@keyframes border-around {
+  0% {
+    background-size: 0 1px, 1px 0, 0 1px, 1px 0;
+  }
+  25% {
+    background-size: 100% 1px, 1px 0, 0 1px, 1px 0;
+  }
+  50% {
+    background-size: 100% 1px, 1px 100%, 0 1px, 1px 0;
+  }
+  75% {
+    background-size: 100% 1px, 1px 100%, 100% 1px, 1px 0;
+  }
+  100% {
+    background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+  }
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-box-shadow: 0 0 0 0 #ffffff66;
+            box-shadow: 0 0 0 0 #ffffff66;
+  }
+  to {
+    -webkit-box-shadow: 0 0 0 30px #ffffff00;
+            box-shadow: 0 0 0 30px #ffffff00;
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-box-shadow: 0 0 0 0 #ffffff66;
+            box-shadow: 0 0 0 0 #ffffff66;
+  }
+  to {
+    -webkit-box-shadow: 0 0 0 30px #ffffff00;
+            box-shadow: 0 0 0 30px #ffffff00;
+  }
+}
+
+html, body, h2, ul {
+  margin: 0;
+  padding: 0;
+}
+
+a, li {
+  text-decoration: none;
+}
+
 html {
   height: 100%;
 }
 
 body {
   min-height: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
   background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+body.preload .header-separator {
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+}
+
+body.preload #header-logo {
+  background-image: none;
+  opacity: 0;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-animation: none !important;
+  animation: none !important;
+}
+
+body.preload #header-logo-details::before, body.preload #header-logo-details::after {
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
 }
 
 ::-webkit-scrollbar {
@@ -30,6 +115,16 @@ header {
           justify-content: center;
 }
 
+header .header-separator {
+  width: 50%;
+  height: 1px;
+  background: #fff;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
 header #header-image {
   width: 101%;
   height: 101%;
@@ -43,12 +138,109 @@ header #header-image {
 }
 
 header #header-logo {
-  width: 300px;
-  height: 300px;
+  position: relative;
+  width: 400px;
+  height: 400px;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  border: 1px solid #fff;
+  border-radius: 2px;
   color: #fff;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, left top, right top, to(#fff)), -webkit-gradient(linear, left top, left bottom, to(#fff)), -webkit-gradient(linear, left top, right top, to(#fff)), -webkit-gradient(linear, left top, left bottom, to(#fff));
+  background-image: linear-gradient(to right, #fff 100%), linear-gradient(to bottom, #fff 100%), linear-gradient(to right, #fff 100%), linear-gradient(to bottom, #fff 100%);
+  background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  -webkit-animation: border-around 1s linear, pulse .5s linear 1s;
+          animation: border-around 1s linear, pulse .5s linear 1s;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: -webkit-transform 1s, width 1s, opacity 1s;
+  -webkit-transition: width 1s, opacity 1s, -webkit-transform 1s;
+  transition: width 1s, opacity 1s, -webkit-transform 1s;
+  transition: transform 1s, width 1s, opacity 1s;
+  transition: transform 1s, width 1s, opacity 1s, -webkit-transform 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+header #header-logo-name {
+  font-size: 2em;
+}
+
+header #header-logo-details {
+  width: 90%;
+  position: relative;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header #header-logo-details::before, header #header-logo-details::after {
+  content: '';
+  width: 60%;
+  height: 1px;
+  position: absolute;
+  background-color: #fff;
+  -webkit-transition: -webkit-transform .5s, width .5s;
+  -webkit-transition: width .5s, -webkit-transform .5s;
+  transition: width .5s, -webkit-transform .5s;
+  transition: transform .5s, width .5s;
+  transition: transform .5s, width .5s, -webkit-transform .5s;
+}
+
+header #header-logo-details::before {
+  top: 0;
+}
+
+header #header-logo-details::after {
+  bottom: 0;
+}
+
+header #header-logo:hover #header-logo-details::before, header #header-logo:hover #header-logo-details::after {
+  width: 80%;
+}
+
+header #header-logo-info {
+  width: 90%;
+  text-align: center;
+}
+
+#nav {
+  width: 100%;
+  height: 7vh;
+}
+
+#nav ul {
+  height: 100%;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#nav ul li {
+  padding: 0 1.25em;
 }
 
 section {
