@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,700;1,200&display=swap");
 @-webkit-keyframes border-around {
   0% {
     background-size: 0 1px, 1px 0, 0 1px, 1px 0;
@@ -72,7 +73,12 @@ html {
 body {
   min-height: 100%;
   background-color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(9, 32, 63, 0.97)), to(rgba(82, 120, 149, 0.97))), url("../images/tiles_background.gif");
+  background-image: linear-gradient(rgba(9, 32, 63, 0.97) 0%, rgba(82, 120, 149, 0.97) 100%), url("../images/tiles_background.gif");
+  background-position: 0 0, center;
+  background-repeat: repeat, repeat;
+  background-size: cover, 600px;
 }
 
 body.preload .header-separator {
@@ -115,43 +121,10 @@ header {
           justify-content: center;
 }
 
-header .header-separator {
-  width: 50%;
-  height: 1px;
-  background: #fff;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
-}
-
-header #header-image {
-  width: 101%;
-  height: 101%;
-  position: absolute;
-  left: -0.5%;
-  top: -0.5%;
-  background-image: url("../images/header.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 header #header-logo {
   position: relative;
-  width: 400px;
-  height: 400px;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  border-radius: 2px;
+  width: 100%;
   color: #fff;
-  background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, left top, right top, to(#fff)), -webkit-gradient(linear, left top, left bottom, to(#fff)), -webkit-gradient(linear, left top, right top, to(#fff)), -webkit-gradient(linear, left top, left bottom, to(#fff));
-  background-image: linear-gradient(to right, #fff 100%), linear-gradient(to bottom, #fff 100%), linear-gradient(to right, #fff 100%), linear-gradient(to bottom, #fff 100%);
-  background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
-  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  -webkit-animation: border-around 1s linear, pulse .5s linear 1s;
-          animation: border-around 1s linear, pulse .5s linear 1s;
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -176,47 +149,43 @@ header #header-logo {
 }
 
 header #header-logo-name {
-  font-size: 2em;
+  position: relative;
+  line-height: 5rem;
+  font-size: 5rem;
+  font-weight: 200;
+  letter-spacing: 0.1rem;
+  margin-bottom: 3rem;
+}
+
+header #header-logo-name .bold {
+  font-weight: 700 !important;
 }
 
 header #header-logo-details {
-  width: 90%;
-  position: relative;
-  padding: 20px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  border-radius: 2px;
+  margin-bottom: 3rem;
 }
 
-header #header-logo-details::before, header #header-logo-details::after {
+header #header-logo-details > div::after {
+  content: '·';
+  margin: 0 1.5rem;
+}
+
+header #header-logo-details > div:last-child::after {
   content: '';
-  width: 60%;
-  height: 1px;
-  position: absolute;
-  background-color: #fff;
-  -webkit-transition: -webkit-transform .5s, width .5s;
-  -webkit-transition: width .5s, -webkit-transform .5s;
-  transition: width .5s, -webkit-transform .5s;
-  transition: transform .5s, width .5s;
-  transition: transform .5s, width .5s, -webkit-transform .5s;
-}
-
-header #header-logo-details::before {
-  top: 0;
-}
-
-header #header-logo-details::after {
-  bottom: 0;
-}
-
-header #header-logo:hover #header-logo-details::before, header #header-logo:hover #header-logo-details::after {
-  width: 80%;
+  margin: 0;
 }
 
 header #header-logo-info {
-  width: 90%;
+  font-size: 1.8rem;
   text-align: center;
 }
 

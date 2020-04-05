@@ -1,10 +1,17 @@
 // @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap')
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap')
+// @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap')
+// @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@500&display=swap')
+// @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500&display=swap')
+// @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap')
+// @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;1,200&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,700;1,200&display=swap')
 @import 'libs/vendor'
 @import 'libs/animations'
 @import 'libs/resources'
 
-$font-main: 'Montserrat', sans-serif
+// $font-main: 'Montserrat', sans-serif
+// $font-main: 'Alegreya', serif
+$font-main: 'Source Sans Pro', sans-serif
 
 html, body, h2, ul
 	margin: 0
@@ -20,6 +27,11 @@ body
 	min-height: 100%
 	background-color: #fff
 	font-family: $font-main
+	// background-image: linear-gradient(rgba(105, 145, 199, 0.97) 0%, rgba(163, 189, 237, 0.97) 100%), url('../images/tiles_background.gif')
+	background-image: linear-gradient(rgba(9, 32, 63, 0.97) 0%, rgba(82, 120, 149, 0.97) 100%), url('../images/tiles_background.gif')
+	background-position: 0 0, center
+	background-repeat: repeat, repeat
+	background-size: cover, 600px
 
 	&.preload
 		.header-separator
@@ -47,35 +59,10 @@ header
 	align-items: center
 	justify-content: center
 
-	.header-separator
-		width: 50%
-		height: 1px
-		background: #fff
-		@include vendor('transition', 'transform .5s')
-
-	#header-image
-		width: 101%
-		height: 101%
-		position: absolute
-		left: -0.5%
-		top: -0.5%
-		background-image: url('../images/header.jpg')
-		background-position: center
-		background-repeat: no-repeat
-		background-size: cover
-
 	#header-logo
 		position: relative
-		width: 400px
-		height: 400px
-		backdrop-filter: blur(10px)
-		border-radius: 2px
+		width: 100%
 		color: #fff
-		background-repeat: no-repeat
-		background-image: linear-gradient(to right, #fff 100%), linear-gradient(to bottom, #fff 100%), linear-gradient(to right, #fff 100%), linear-gradient(to bottom, #fff 100%)
-		background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%
-		background-position: 0 0, 100% 0, 100% 100%, 0 100%
-		animation: border-around 1s linear, pulse .5s linear 1s
 		opacity: 1
 		@include vendor('transform', 'scale(1)')
 		@include vendor('transition', 'transform 1s, width 1s, opacity 1s')
@@ -85,35 +72,37 @@ header
 		justify-content: space-evenly
 
 		&-name
-			font-size: 2em
+			position: relative
+			line-height: 5rem
+			font-size: 5rem
+			font-weight: 200
+			letter-spacing: 0.1rem
+			margin-bottom: 3rem
+
+			.bold
+				font-weight: 700 !important
 		
 		&-details
-			width: 90%
-			position: relative
-			padding: 20px 0
 			display: flex
 			justify-content: space-around
+			font-size: 1.2rem
+			background-color: rgba(0, 0, 0, .3)
+			padding: 2rem
+			border-radius: 2px
+			margin-bottom: 3rem
 
-			&::before, &::after
-				content: ''
-				width: 60%
-				height: 1px
-				position: absolute
-				background-color: #fff
-				@include vendor('transition', 'transform .5s, width .5s')
-
-			&::before
-				top: 0
-
-			&::after
-				bottom: 0
-
-		&:hover
-			#header-logo-details::before, #header-logo-details::after
-				width: 80%
+			> div
+				
+				&::after
+					content: '·'
+					margin: 0 1.5rem
+				
+				&:last-child::after
+					content: ''
+					margin: 0
 
 		&-info
-			width: 90%
+			font-size: 1.8rem
 			text-align: center
 
 #nav
