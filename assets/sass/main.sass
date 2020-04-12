@@ -16,22 +16,20 @@ $font-main: 'Source Sans Pro', sans-serif
 html, body, h2, ul
 	margin: 0
 	padding: 0
+	border: 0
+	font-size: 100%
 
 a, li
 	text-decoration: none
-
-html
-	height: 100%
 	
 body
 	min-height: 100%
-	background-color: #fff
 	font-family: $font-main
-	// background-image: linear-gradient(rgba(105, 145, 199, 0.97) 0%, rgba(163, 189, 237, 0.97) 100%), url('../images/tiles_background.gif')
 	background-image: linear-gradient(rgba(9, 32, 63, 0.97) 0%, rgba(82, 120, 149, 0.97) 100%), url('../images/tiles_background.gif')
 	background-position: 0 0, center
 	background-repeat: repeat, repeat
 	background-size: cover, 600px
+	// background-color: red
 
 	&.preload
 		.header-separator
@@ -50,7 +48,7 @@ body
     width: 0px
     background: transparent
 
-header
+#header
 	height: 100vh
 	width: 100%
 	position: relative
@@ -59,7 +57,7 @@ header
 	align-items: center
 	justify-content: center
 
-	#header-logo
+	&-logo
 		position: relative
 		width: 100%
 		color: #fff
@@ -105,9 +103,37 @@ header
 			font-size: 1.8rem
 			text-align: center
 
+	// &-scroll-down
+	// 	width: 1.5rem
+	// 	height: 1.5rem
+	// 	position: relative
+	// 	border-bottom: 3px solid #fff
+	// 	border-right: 3px solid #fff
+	// 	transform: rotate(45deg)
+
+	// 	&::after
+	// 		content: '·'
+	// 		position: absolute
+	// 		top: 0
+	// 		left: 0
+	// 		color: white
+	// 		font-size: 5rem
+		// @include arrow(#fff)
+		// width: 8px
+		// height: 8px
+		// transform: rotate(-45deg)
+    	// box-shadow: 2px 2px 0 #fff, 3px 2px 0 #fff, 2px 3px 0 #fff, 3px 3px 0 #fff
+
 #nav
-	width: 100%
-	height: 7vh
+	width: 80%
+	height: 4rem
+	position: sticky
+	top: 0
+	margin: 0 auto
+	z-index: 1
+	font-size: 1.3rem
+	background-color: #f3f3f3
+	border-radius: 2px 2px 0 0
 
 	ul
 		height: 100%
@@ -115,7 +141,104 @@ header
 		@include flex-center
 
 		li
-			padding: 0 1.25em
+			height: 100%
+			cursor: pointer
+			@include flex-center
+		
+			a
+				height: 100%
+				color: inherit
+				padding: 0 1.25rem
+				@include flex-center
+				@include vendor('transition', 'background-color .2s, color .2s')
+			
+				&:hover
+					background-color: #DEECFF
 
-section
-	background-color: red
+				&.active
+					background-color: #09203f
+					color: #fff
+
+#main
+	width: 80%
+	margin: 0 auto
+	background-color: #fff
+
+	#about
+		display: flex
+		justify-content: space-between
+		font-size: 1.2rem
+		// padding: 1rem
+
+		&-info
+			width: 70%
+			display: flex
+			flex-direction: column
+			align-items: center
+
+			&-quote
+				width: 40%
+				position: relative
+				display: block
+				border-width: 2px 0
+				border-style: solid
+				border-color: #eee
+				padding: 1.5rem .5rem 1.8em
+				margin: 1.5rem 0
+				
+				&::before
+					content: '\201C'
+					position: absolute
+					top: -1rem
+					left: 50%
+					transform: translate(-50%, -50%)
+					background: #fff
+					width: 3rem
+					height: 2rem
+					font: 6em/1.08em 'PT Sans', sans-serif
+					color: #464646
+					text-align: center
+
+				&::after
+					content: "\2013 \2003" attr(cite)
+					position: absolute
+					bottom: .5rem
+					right: .5rem	
+					text-align: right
+					font-size: 0.875em
+					color: #e74c3c
+
+			&-description
+				padding-left: 1rem
+
+			&-icons
+				width: 100%
+				height: 100%
+				display: flex
+				// align-items: center
+				// justify-content: space-around
+
+				.icon-container
+					// width: 15%
+					flex-grow: 1
+					flex-basis: 0
+					display: flex
+					flex-direction: column
+					align-items: center
+					font-size: 1.4rem
+					font-weight: 700
+
+					svg
+						width: 50%
+						stroke: #09203f
+						stroke-width: 10
+						fill: none
+
+						path
+							stroke-dasharray: 3200
+							animation: stroking 2s linear
+							color: red
+
+		&-img
+			width: 30%
+			height: auto

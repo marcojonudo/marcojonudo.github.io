@@ -1,16 +1,41 @@
-const windowWidth = $(window).width();
-const windowHeight = $(window).height();
-
-// $('#header').mousemove((event) => {
-//     const moveX = ((windowWidth / 2) - event.pageX) * 0.01;
-//     const moveY = ((windowHeight / 2) - event.pageY) * 0.01;
-
-//     $('#header-image').css('margin-left', `${moveX}px`);
-//     $('#header-image').css('margin-top', `${moveY}px`);
-// });
-
 $(window).on('load', () => {
     setTimeout(() => {
         $('body').removeClass('preload');
     }, 200);
 });
+
+const nav = $('#nav');
+const navLinks = nav.find('a');
+
+navLinks.scrolly({
+    speed: 500,
+    offset: () => nav.height()
+})
+.on('click', function() {
+    navLinks
+        .removeClass('active')
+        .removeClass('active-locked');
+
+    $(this)
+        .addClass('active')
+        .addClass('active-locked');
+})
+.each(function() {
+    const linkElem = $(this),
+          sectionId = $(this).attr('href'),
+          section = $(sectionId);
+          
+    section.scrollex({
+        mode: 'middle',
+        enter: function() {
+            if (navLinks.filter('.active-locked').length == 0) {
+                navLinks.removeClass('active');
+                linkElem.addClass('active');
+
+            } else if ($this.hasClass('active-locked')) {
+                linkElem.removeClass('active-locked');
+            }
+        }
+    });
+});;
+
