@@ -31,7 +31,6 @@ navLinks.scrolly({
             if (navLinks.filter('.active-locked').length == 0) {
                 navLinks.removeClass('active');
                 linkElem.addClass('active');
-
             } else if ($this.hasClass('active-locked')) {
                 linkElem.removeClass('active-locked');
             }
