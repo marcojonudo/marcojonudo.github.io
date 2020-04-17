@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,700;1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,2000,7001,200&display=swap");
 @-webkit-keyframes border-around {
   0% {
     background-size: 0 1px, 1px 0, 0 1px, 1px 0;
@@ -410,7 +410,7 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   padding-top: 100%;
 }
 
-#main #projects .project-title {
+#main #projects .project .project-title {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -432,11 +432,11 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   transition: transform .3s, -webkit-transform .3s;
 }
 
-#main #projects .project-title .bold {
+#main #projects .project .project-title .bold {
   font-weight: 700 !important;
 }
 
-#main #projects .project-description {
+#main #projects .project .project-description {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -460,7 +460,7 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   transition: transform .3s, opacity .3s, -webkit-transform .3s;
 }
 
-#main #projects .project-technologies {
+#main #projects .project .project-technologies {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -473,6 +473,22 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+}
+
+#main #projects .project .project-technologies .svg-container {
+  width: 4em;
+  height: 4em;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 .5rem;
   opacity: 0;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
@@ -482,9 +498,19 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   transition: transform .3s, opacity .3s, -webkit-transform .3s;
 }
 
-#main #projects .project-technologies svg {
-  width: 15%;
-  padding: 0 .5rem;
+#main #projects .project .project-technologies .svg-container:nth-child(1) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+#main #projects .project .project-technologies .svg-container:nth-child(2) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+#main #projects .project .project-technologies .svg-container:nth-child(3) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
 }
 
 #main #projects .project:hover .project-title {
@@ -499,9 +525,9 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
           transform: translate3d(0, 0, 0);
 }
 
-#main #projects .project:hover .project-technologies {
+#main #projects .project:hover .project-technologies .svg-container {
   opacity: 1;
-  -webkit-transform: translate3d(0, -10%, 0);
-          transform: translate3d(0, -10%, 0);
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
 }
 /*# sourceMappingURL=main.css.map */
