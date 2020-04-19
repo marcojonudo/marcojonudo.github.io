@@ -3,7 +3,7 @@
     align-items: center
     justify-content: center
 
-@mixin loop-nth-child($elements, $property, $value)
+@mixin loop-nth-child($elements)
     @for $i from 1 through $elements
         &:nth-child(#{$i})
-            #{$property}: $value
+            transition-delay: #{$i * .1}s
