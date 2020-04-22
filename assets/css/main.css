@@ -74,7 +74,7 @@
   }
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -94,6 +94,10 @@ body {
 
 ol, ul {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 blockquote, q {
@@ -121,6 +125,14 @@ table {
 @font-face {
   font-family: "Source Sans Pro";
   font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/SourceSansPro-Regular.woff2") format("woff2"), url("../fonts/SourceSansPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url("../fonts/SourceSansPro-Bold.woff2") format("woff2"), url("../fonts/SourceSansPro-Bold.ttf") format("truetype");
@@ -143,6 +155,14 @@ body {
   background-position: 0 0, center;
   background-repeat: repeat, repeat;
   background-size: cover, 600px;
+}
+
+body p {
+  font-weight: 200;
+}
+
+body strong {
+  font-weight: 400;
 }
 
 body.preload .header-separator {
@@ -345,21 +365,28 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
           align-items: center;
 }
 
-#about-info-quote {
-  width: 40%;
+#about-info hr {
+  width: 70%;
+  height: 1px;
+  border: 0;
+  background-color: #eeeeee;
+}
+
+#about-info .quote {
+  width: 75%;
   position: relative;
-  display: block;
   border-width: 2px 0;
   border-style: solid;
   border-color: #eee;
+  font-weight: 200;
   padding: 1.5rem .5rem 1.8em;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
 }
 
-#about-info-quote::before {
+#about-info .quote::before {
   content: '\201C';
   position: absolute;
-  top: -1rem;
+  top: -.7rem;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -371,7 +398,7 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   text-align: center;
 }
 
-#about-info-quote::after {
+#about-info .quote::after {
   content: "– " attr(cite);
   position: absolute;
   bottom: .5rem;
@@ -382,7 +409,7 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
 }
 
 #about-info-description {
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
 
 #about-info-icons {
@@ -418,13 +445,16 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   stroke: #09203f;
   stroke-width: 10;
   fill: none;
+  opacity: 0;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
 }
 
-#about-info-icons .icon-container svg path {
+#about-info-icons .icon-container .animate-stroke {
+  opacity: 1;
   stroke-dasharray: 3200;
-  -webkit-animation: stroking 2s linear;
-          animation: stroking 2s linear;
-  color: red;
+  -webkit-animation: stroking 4s linear;
+          animation: stroking 4s linear;
 }
 
 #about-img {
@@ -447,8 +477,9 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   background-color: #f3f3f3;
   border-radius: 2px;
   color: #000;
-  -webkit-transition: color .2s;
-  transition: color .2s;
+  overflow: hidden;
+  -webkit-transition: color 0.3s, background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 
 #projects .project::before {
@@ -462,10 +493,25 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   width: 100%;
   height: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
   background-color: #000;
   opacity: 0;
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+#projects .project img {
+  width: 100%;
+  opacity: .3;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-transform: translate3d(50%, 50%, 0);
+          transform: translate3d(50%, 50%, 0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 #projects .project .project-title {
@@ -476,10 +522,10 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   z-index: 1;
   -webkit-transform: translate3d(-50%, -50%, 0);
           transform: translate3d(-50%, -50%, 0);
-  -webkit-transition: -webkit-transform .3s;
-  transition: -webkit-transform .3s;
-  transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 #projects .project .project-title .bold {
@@ -497,10 +543,10 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
   opacity: 0;
   -webkit-transform: translate3d(-50%, -10%, 0);
           transform: translate3d(-50%, -10%, 0);
-  -webkit-transition: opacity .3s, -webkit-transform .3s;
-  transition: opacity .3s, -webkit-transform .3s;
-  transition: transform .3s, opacity .3s;
-  transition: transform .3s, opacity .3s, -webkit-transform .3s;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
 }
 
 #projects .project .project-technologies {
@@ -533,13 +579,12 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 .5rem;
-  opacity: 0;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: opacity .3s, -webkit-transform .3s;
-  transition: opacity .3s, -webkit-transform .3s;
-  transition: transform .3s, opacity .3s;
-  transition: transform .3s, opacity .3s, -webkit-transform .3s;
+  -webkit-transform: translate3d(0, -10%, 0);
+          transform: translate3d(0, -10%, 0);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
 }
 
 #projects .project .project-technologies .svg-container:nth-child(1) {
@@ -557,16 +602,9 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
           transition-delay: 0.3s;
 }
 
-#projects .project.android {
-  background-color: #3ddb84 !important;
-}
-
-#projects .project.cordova {
-  background-color: #ececec !important;
-}
-
-#projects .project.angular {
-  background-color: #B52E31 !important;
+#projects .project .project-technologies .svg-container path {
+  -webkit-transition: fill 0.3s;
+  transition: fill 0.3s;
 }
 
 #projects .project:hover {
@@ -575,6 +613,31 @@ body.preload #header-logo-details::before, body.preload #header-logo-details::af
 
 #projects .project:hover::after {
   opacity: .6;
+}
+
+#projects .project:hover img {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+          transform: translate3d(0, 0, 0) !important;
+}
+
+#projects .project:hover.android {
+  background-color: #3ddb84 !important;
+}
+
+#projects .project:hover.cordova {
+  background-color: #ececec !important;
+}
+
+#projects .project:hover.cordova #cordova-icon path {
+  fill: #E7E7E7;
+}
+
+#projects .project:hover.angular {
+  background-color: #b52e31 !important;
+}
+
+#projects .project:hover.angular #micronaut-icon path {
+  fill: #e7e7e7;
 }
 
 #projects .project:hover .project-title {

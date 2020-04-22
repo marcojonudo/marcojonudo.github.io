@@ -6,6 +6,7 @@ $(window).on('load', () => {
 
 const nav = $('#nav');
 const navLinks = nav.find('a');
+const aboutSectionId = "#about";
 
 navLinks.scrolly({
     speed: 500,
@@ -33,6 +34,11 @@ navLinks.scrolly({
                 linkElem.addClass('active');
             } else if ($this.hasClass('active-locked')) {
                 linkElem.removeClass('active-locked');
+            }
+
+            if (sectionId === aboutSectionId) {
+                $('.icon-container svg').css('opacity', 1);
+                $('.icon-container path').addClass('animate-stroke');
             }
         }
     });

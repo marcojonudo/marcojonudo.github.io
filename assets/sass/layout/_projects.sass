@@ -2,17 +2,16 @@
     display: flex
     justify-content: space-between
 
-    .project 
-        // flex-grow: 1
-        // flex-basis: 0
+    .project
         width: 29%
         position: relative
         background-color: #f3f3f3
         border-radius: 2px
         color: #000
-        transition: color .2s
+        overflow: hidden
+        transition: color $project-transition-duration, background-color $project-transition-duration
 
-        &::before 
+        &::before
             content: ''
             float: left
             padding-top: 100%
@@ -22,23 +21,32 @@
             width: 100%
             height: 100%
             position: absolute
+            top: 0
+            left: 0
             background-color: #000
             opacity: 0
-            transition: opacity .2s
+            transition: opacity $project-transition-duration
+ 
+        img
+            width: 100%
+            opacity: .3
+            filter: blur(5px)
+            transform: translate3d(50%, 50%, 0)
+            transition: transform $project-transition-duration
 
-        .project-title 
+        .project-title
             position: absolute
             top: 50%
             left: 50%
             font-size: 2rem
             z-index: 1
             transform: translate3d(-50%, -50%, 0)
-            transition: transform .3s
+            transition: transform $project-transition-duration
 
-            .bold 
+            .bold
                 font-weight: 700 !important
 
-        .project-description 
+        .project-description
             position: absolute
             top: 50%
             left: 50%
@@ -48,10 +56,9 @@
             text-align: center
             opacity: 0
             transform: translate3d(-50%, -10%, 0)
-            transition: transform .3s, opacity .3s
+            transition: transform $project-transition-duration, opacity $project-transition-duration
 
-
-        .project-technologies 
+        .project-technologies
             position: absolute
             bottom: 0
             width: 100%
@@ -66,50 +73,45 @@
                 position: relative
                 @include flex-center
                 margin: 0 .5rem
-                opacity: 0
-                transform: translate3d(0, 0, 0)
-                transition: transform .3s, opacity .3s
+                transform: translate3d(0, -10%, 0)
+                transition: transform $project-transition-duration, opacity $project-transition-duration
                 @include loop-nth-child(3)
 
-        &.android
-            background-color: #3ddb84 !important
-
-        &.cordova
-            background-color: #ececec !important
-
-        &.angular
-            background-color: #B52E31 !important
+                path
+                    transition: fill $project-transition-duration
 
         &:hover
             color: #fff
             
             &::after
                 opacity: .6
-            
-            .project-title 
+
+            img
+                transform: translate3d(0, 0, 0) !important
+
+            &.android
+                background-color: #3ddb84 !important
+
+            &.cordova
+                background-color: #ececec !important
+
+                #cordova-icon path
+                    fill: #E7E7E7
+
+            &.angular
+                background-color: #b52e31 !important
+
+                #micronaut-icon path
+                    fill: #e7e7e7
+
+            .project-title
                 opacity: 1
                 transform: translate3d(-50%, -400%, 0)
 
-            .project-description 
+            .project-description
                 opacity: 1
                 transform: translate3d(-50%, -50%, 0)
 
             .project-technologies .svg-container
                 opacity: 1
                 transform: translate3d(0, -50%, 0)
-
-    // #zowi-apprende-project
-
-    // 	&::after
-    // 		content: ''
-    // 		width: 100%
-    // 		height: 100%
-    // 		position: absolute
-    // 		background: linear-gradient(rgba(61, 219, 132, .7), rgba(61, 219, 132, .7)), url('../images/zowi.png')
-    // 		background-size: cover, cover
-    // 		background-position: 0 0, 50% 50%
-    // 		background-repeat: no-repeat, no-repeat
-    // 		// filter: blur(7px)
-
-    // 	&:hover::after
-    // 		background-color: red
