@@ -51,9 +51,26 @@
 					margin: 0
 
 		&-info
+			display: flex
+			height: 2.4rem
+			overflow: hidden
 			font-size: 1.8rem
-			text-align: center
 			font-weight: 200
+			border-right: 2px solid transparent
+			animation: caret 1s step-end infinite
+
+			.typewriting
+				white-space: nowrap
+				overflow: hidden
+
+			.typewriting-animate
+				animation: typing 1.5s steps(10, end) 1s 1 normal both
+
+			$width-values: 13.8, 15.2, 9.2, 11, 21.6
+			$steps-values: 35, 37, 22, 29, 54
+			@for $i from 1 to 6
+				.typewriting-animate-#{$i}
+					@include typewritingAnimation($i, nth($width-values, $i), 25, nth($steps-values, $i), 4)
 
 // &-scroll-down
 	// 	width: 1.5rem

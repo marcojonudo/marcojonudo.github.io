@@ -1,0 +1,14 @@
+@mixin typewritingAnimation($index, $width, $duration, $steps, $delay)
+    $animation-name: typewriting-#{$index}
+    animation: $animation-name #{$duration}s steps($steps, end) #{$delay}s 1 normal both
+
+    @at-root
+        @keyframes #{$animation-name}
+            $index: $index - 1
+            $add-value: $index * 20
+            $values: 0 + $add-value, 20 + $add-value, 5 + $add-value, 15 + $add-value
+
+            0%, #{nth($values, 1)}%, #{nth($values, 2)}%, 100%
+                width: 0
+            #{nth($values, 3)}%, #{nth($values, 4)}%
+                width: #{$width}em

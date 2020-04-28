@@ -21,3 +21,27 @@
         stroke-dashoffset: 3200
     100%
         stroke-dashoffset: 0
+
+@keyframes vertical-translation 
+    0%, 16%, 100%
+        transform: translate3d(0, 0,0)
+    20%, 36%
+        transform: translate3d(0, -20%,0)
+    40%, 56%
+        transform: translate3d(0, -40%,0)
+    60%, 76%
+        transform: translate3d(0, -60%,0)
+    80%, 96%
+        transform: translate3d(0, -80%,0)
+
+@keyframes typing
+    from
+        width: 0
+    to
+        width: 4.8em
+
+@keyframes caret
+  0%, 100%
+        border-color: transparent
+  50%
+        border-color: #fff
