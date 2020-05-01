@@ -1,6 +1,6 @@
 @mixin typewritingAnimation($index, $width, $duration, $steps, $delay)
     $animation-name: typewriting-#{$index}
-    animation: $animation-name #{$duration}s steps($steps, end) #{$delay}s 1 normal both
+    animation: $animation-name #{$duration}s steps($steps, end) #{$delay}s infinite
 
     @at-root
         @keyframes #{$animation-name}
@@ -12,3 +12,57 @@
                 width: 0
             #{nth($values, 3)}%, #{nth($values, 4)}%
                 width: #{$width}em
+
+@mixin flex-center
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin loop-nth-child($elements)
+    @for $i from 1 through $elements
+        &:nth-child(#{$i})
+            transition-delay: #{$i * .1}s
+
+@mixin arrow
+    width: 30%
+    height: 30%
+    border: solid #000
+    border-width: 0 1px 1px 0
+
+@mixin arrow-right
+    transform: rotate(-45deg)
+
+@mixin highlight
+    background-color: $background-color-highlight
+    color: $color-highlight
+
+@mixin quote
+        position: relative
+        border-width: 2px 0
+        border-style: solid
+        border-color: #eee
+        font-weight: 200
+        padding: 1.5rem .5rem 1.8em
+        margin: 1.5rem auto
+
+        &::before
+            content: '\201C'
+            position: absolute
+            top: -.7rem
+            left: 50%
+            transform: translate3d(-50%, -50%, 0)
+            background: #fff
+            width: 3rem
+            height: 2rem
+            font: 6em/1.08em 'PT Sans', sans-serif
+            color: $dark-grey
+            text-align: center
+
+        &::after
+            content: "\2013 \2003" attr(cite)
+            position: absolute
+            bottom: .5rem
+            right: .5rem
+            text-align: right
+            font-size: 0.875em
+            color: #e74c3c

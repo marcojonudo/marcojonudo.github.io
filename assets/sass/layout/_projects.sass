@@ -9,7 +9,7 @@
         border-radius: 2px
         color: #000
         overflow: hidden
-        transition: color $project-transition-duration, background-color $project-transition-duration
+        transition: color $default-transition-duration, background-color $default-transition-duration
 
         &::before
             content: ''
@@ -25,14 +25,14 @@
             left: 0
             background-color: #000
             opacity: 0
-            transition: opacity $project-transition-duration
+            transition: opacity $default-transition-duration
  
         img
             width: 100%
             opacity: .3
             filter: blur(5px)
             transform: translate3d(50%, 50%, 0)
-            transition: transform $project-transition-duration
+            transition: transform $default-transition-duration
 
         .project-title
             position: absolute
@@ -41,7 +41,7 @@
             font-size: 2rem
             z-index: 1
             transform: translate3d(-50%, -50%, 0)
-            transition: transform $project-transition-duration
+            transition: transform $default-transition-duration
 
             .bold
                 font-weight: 700 !important
@@ -56,7 +56,7 @@
             text-align: center
             opacity: 0
             transform: translate3d(-50%, -10%, 0)
-            transition: transform $project-transition-duration, opacity $project-transition-duration
+            transition: transform $default-transition-duration, opacity $default-transition-duration
 
         .project-technologies
             position: absolute
@@ -74,11 +74,11 @@
                 @include flex-center
                 margin: 0 .5rem
                 transform: translate3d(0, -10%, 0)
-                transition: transform $project-transition-duration, opacity $project-transition-duration
+                transition: transform $default-transition-duration, opacity $default-transition-duration
                 @include loop-nth-child(3)
 
                 path
-                    transition: fill $project-transition-duration
+                    transition: fill $default-transition-duration
 
         &:hover
             color: #fff

@@ -1,9 +1,0 @@
-@mixin flex-center
-    display: flex
-    align-items: center
-    justify-content: center
-
-@mixin loop-nth-child($elements)
-    @for $i from 1 through $elements
-        &:nth-child(#{$i})
-            transition-delay: #{$i * .1}s

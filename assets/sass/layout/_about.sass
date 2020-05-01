@@ -11,45 +11,127 @@
         background-color: #eeeeee
 
     .quote
-        width: 50%
-        position: relative
-        border-width: 2px 0
-        border-style: solid
-        border-color: #eee
-        font-weight: 200
-        padding: 1.5rem .5rem 1.8em
-        margin: 1.5rem 10%
-
-        &::before
-            content: '\201C'
-            position: absolute
-            top: -.7rem
-            left: 50%
-            transform: translate(-50%, -50%)
-            background: #fff
-            width: 3rem
-            height: 2rem
-            font: 6em/1.08em 'PT Sans', sans-serif
-            color: #464646
-            text-align: center
-
-        &::after
-            content: "\2013 \2003" attr(cite)
-            position: absolute
-            bottom: .5rem
-            right: .5rem
-            text-align: right
-            font-size: 0.875em
-            color: #e74c3c
+        width: 70%
+        @include quote
 
     &-description
-        padding: 0 1rem
+        display: flex
+
+        &-text-container
+            flex-grow: 1
+            position: relative
+            overflow: hidden
+            margin: 0 1rem
+
+            #slider-wrapper
+                height: 100%
+                width: percentage($about-me-slides)
+                display: flex
+                align-items: center
+                transition: margin-left $slides-transition-duration cubic-bezier(0.77, 0, 0.175, 1)
+
+                .text-slide
+                    width: percentage(1/$about-me-slides)
+                    padding: 0 1.5%
+                    float: left
+                    position: relative
+
+            .slider-radio
+                display: none
+
+            #slider-controls
+                height: 2rem
+                position: absolute
+                top: 50%
+                width: 100%
+                transform: translate3d(0, -50%, 0)
+
+                label
+                    display: none
+                    width: 2rem
+                    height: 2rem
+                    border-radius: 50%
+                    @include highlight
+                    cursor: pointer
+                    transition: background-color $default-transition-duration
+
+                    &:hover
+                        background-color: #16498b
+
+            #slider-dot-control
+                width: 100%
+                position: absolute
+                bottom: 0
+                @include flex-center
+
+                label
+                    width: 10px
+                    height: 10px
+                    border-radius: 5px
+                    margin: 0 3px
+                    cursor: pointer
+                    background-color: $light-blue
+                    transition: background-color $default-transition-duration
+
+                    &:hover
+                        background: $dark-blue
+
+            %control-left-label
+                display: block
+                float: left
+
+            %control-right-label
+                display: block
+                float: right
+
+            %arrow-background
+                background-size: 50%
+                background-position: center
+                background-repeat: no-repeat
+
+            %right-arrow
+                @extend %arrow-background
+                background-image: url(../images/right-arrow.svg)
+
+            %left-arrow
+                @extend %arrow-background
+                background-image: url(../images/left-arrow.svg)
+
+            @for $i from 1 through $about-me-slides
+                #slide#{$i}:checked
+                    & ~ #slider-wrapper
+                        margin-left: percentage(1 - $i)
+
+                    & ~ #slider-dot-control label:nth-child(#{$i})
+                        @include highlight
+
+                @if $i == 1
+                    #slide#{$i}:checked ~ #slider-controls label:nth-child(#{$about-me-slides})
+                        @extend %control-left-label
+                        @extend %left-arrow
+
+                @else if $i == $about-me-slides
+                    #slide#{$i}:checked ~ #slider-controls label:nth-child(1)
+                            @extend %control-right-label
+                            @extend %right-arrow
+                    
+                @if $i < $about-me-slides
+                    #slide#{$i}:checked
+                        & ~ #slider-controls label:nth-child(#{$i +1})
+                            @extend %control-right-label
+                            @extend %right-arrow
+
+                @if $i > 1
+                    #slide#{$i}:checked
+                        & ~ #slider-controls label:nth-child(#{$i - 1})
+                            @extend %control-left-label
+                            @extend %left-arrow
 
         img
             width: 30%
             height: auto
             float: right
-            margin: 0 -1rem 0 1rem
+            object-fit: contain
 
     &-icons
         width: 100%
@@ -67,18 +149,13 @@
 
             svg
                 width: 50%
-                stroke: #09203f
+                stroke: $dark-blue
                 stroke-width: 10
                 fill: none
                 opacity: 0
-                transition: opacity .2s
+                transition: opacity $default-transition-duration
 
             .animate-stroke
                 opacity: 1
                 stroke-dasharray: 3200
                 animation: stroking 4s linear
-
-    // &-img
-    //     width: 30%
-    //     height: auto
-    //     object-fit: contain
