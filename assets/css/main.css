@@ -319,13 +319,16 @@ body.preload .section-title::before {
           justify-content: space-evenly;
 }
 
+#header-logo > * {
+  margin: 1.5rem 0;
+}
+
 #header-logo-name {
   position: relative;
   line-height: 5rem;
   font-size: 5rem;
   font-weight: 200;
   letter-spacing: 0.1rem;
-  margin-bottom: 3rem;
 }
 
 #header-logo-name .bold {
@@ -342,7 +345,6 @@ body.preload .section-title::before {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 2rem;
   border-radius: 2px;
-  margin-bottom: 3rem;
   font-weight: 200;
 }
 
@@ -354,6 +356,22 @@ body.preload .section-title::before {
 #header-logo-details > div:last-child::after {
   content: '';
   margin: 0;
+}
+
+#header-logo-icons {
+  height: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#header-logo-icons a {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  margin: 0 1rem;
 }
 
 #header-logo-info {

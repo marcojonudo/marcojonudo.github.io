@@ -19,13 +19,15 @@
 		align-items: center
 		justify-content: space-evenly
 
+		> *
+			margin: 1.5rem 0
+
 		&-name
 			position: relative
 			line-height: 5rem
 			font-size: 5rem
 			font-weight: 200
 			letter-spacing: 0.1rem
-			margin-bottom: 3rem
 
 			.bold
 				font-weight: 700 !important
@@ -37,7 +39,6 @@
 			background-color: rgba(0, 0, 0, .3)
 			padding: 2rem
 			border-radius: 2px
-			margin-bottom: 3rem
 			font-weight: 200
 
 			> div
@@ -49,6 +50,15 @@
 				&:last-child::after
 					content: ''
 					margin: 0
+
+		&-icons
+			height: 2rem
+			display: flex
+
+			a
+				flex-grow: 1
+				flex-basis: 0
+				margin: 0 1rem
 
 		&-info
 			display: flex
