@@ -1,4 +1,36 @@
-#main	
-	width: 80%	
-	margin: 0 auto	
+%section-separator
+	position: absolute
+	width: 80%
+	bottom: 0
+	border-bottom: 1px solid $light-grey
+	transition: transform 1s
+	
+#main
+	width: 80%
+	margin: 0 auto
 	background-color: #fff
+
+	section
+		position: relative
+		margin: 5rem 0
+		padding: 2rem 0
+		overflow: hidden
+
+		&:first-child
+			padding-top: 0
+			margin-top: 0
+
+		.section-title
+			position: relative
+			font-size: .8rem
+			font-weight: 200
+			font-style: italic
+
+			&::before
+				content: ''
+				@extend %section-separator
+
+		&::after
+			content: ''
+			@extend %section-separator
+			right: 0

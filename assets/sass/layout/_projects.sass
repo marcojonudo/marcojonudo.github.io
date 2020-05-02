@@ -1,117 +1,123 @@
 #projects
-    display: flex
-    justify-content: space-between
+    font-size: 1.2rem
 
-    .project
-        width: 29%
-        position: relative
-        background-color: #f3f3f3
-        border-radius: 2px
-        color: #000
-        overflow: hidden
-        transition: color $default-transition-duration, background-color $default-transition-duration
+    &-description
+        margin: 0 1rem
+    
+    &-list
+        display: flex
+        justify-content: space-between
 
-        &::before
-            content: ''
-            float: left
-            padding-top: 100%
+        .project
+            width: 32%
+            position: relative
+            background-color: #f3f3f3
+            border-radius: 2px
+            color: #000
+            overflow: hidden
+            transition: color $default-transition-duration, background-color $default-transition-duration
 
-        &::after
-            content: ''
-            width: 100%
-            height: 100%
-            position: absolute
-            top: 0
-            left: 0
-            background-color: #000
-            opacity: 0
-            transition: opacity $default-transition-duration
- 
-        img
-            width: 100%
-            opacity: .3
-            filter: blur(5px)
-            transform: translate3d(50%, 50%, 0)
-            transition: transform $default-transition-duration
+            &::before
+                content: ''
+                float: left
+                padding-top: 100%
 
-        .project-title
-            position: absolute
-            top: 50%
-            left: 50%
-            font-size: 2rem
-            z-index: 1
-            transform: translate3d(-50%, -50%, 0)
-            transition: transform $default-transition-duration
-
-            .bold
-                font-weight: 700 !important
-
-        .project-description
-            position: absolute
-            top: 50%
-            left: 50%
-            width: 95%
-            font-size: 1.3rem
-            z-index: 1
-            text-align: center
-            opacity: 0
-            transform: translate3d(-50%, -10%, 0)
-            transition: transform $default-transition-duration, opacity $default-transition-duration
-
-        .project-technologies
-            position: absolute
-            bottom: 0
-            width: 100%
-            display: flex
-            justify-content: center
-            align-items: flex-end
-            z-index: 1
-
-            .svg-container
-                width: 4em
-                height: 4em
-                position: relative
-                @include flex-center
-                margin: 0 .5rem
-                transform: translate3d(0, -10%, 0)
-                transition: transform $default-transition-duration, opacity $default-transition-duration
-                @include loop-nth-child(3)
-
-                path
-                    transition: fill $default-transition-duration
-
-        &:hover
-            color: #fff
-            
             &::after
-                opacity: .6
-
+                content: ''
+                width: 100%
+                height: 100%
+                position: absolute
+                top: 0
+                left: 0
+                background-color: #000
+                opacity: 0
+                transition: opacity $default-transition-duration
+    
             img
-                transform: translate3d(0, 0, 0) !important
-
-            &.android
-                background-color: #3ddb84 !important
-
-            &.cordova
-                background-color: #ececec !important
-
-                #cordova-icon path
-                    fill: #E7E7E7
-
-            &.angular
-                background-color: #b52e31 !important
-
-                #micronaut-icon path
-                    fill: #e7e7e7
+                width: 100%
+                opacity: .3
+                filter: blur(5px)
+                transform: translate3d(50%, 50%, 0)
+                transition: transform $default-transition-duration
 
             .project-title
-                opacity: 1
-                transform: translate3d(-50%, -400%, 0)
+                position: absolute
+                top: 50%
+                left: 50%
+                font-size: 2rem
+                z-index: 1
+                transform: translate3d(-50%, -50%, 0)
+                transition: transform $default-transition-duration
+
+                .bold
+                    font-weight: 700 !important
 
             .project-description
-                opacity: 1
-                transform: translate3d(-50%, -50%, 0)
+                position: absolute
+                top: 50%
+                left: 50%
+                width: 95%
+                font-size: 1.3rem
+                z-index: 1
+                text-align: center
+                opacity: 0
+                transform: translate3d(-50%, -10%, 0)
+                transition: transform $default-transition-duration, opacity $default-transition-duration
 
-            .project-technologies .svg-container
-                opacity: 1
-                transform: translate3d(0, -50%, 0)
+            .project-technologies
+                position: absolute
+                bottom: 0
+                width: 100%
+                display: flex
+                justify-content: center
+                align-items: flex-end
+                z-index: 1
+
+                .svg-container
+                    width: 4em
+                    height: 4em
+                    position: relative
+                    @include flex-center
+                    margin: 0 .5rem
+                    transform: translate3d(0, -10%, 0)
+                    transition: transform $default-transition-duration, opacity $default-transition-duration
+                    @include loop-nth-child(3)
+
+                    path
+                        transition: fill $default-transition-duration
+
+            &:hover
+                color: #fff
+                
+                &::after
+                    opacity: .6
+
+                img
+                    transform: translate3d(0, 0, 0) !important
+
+                &.android
+                    background-color: #3ddb84 !important
+
+                &.cordova
+                    background-color: #ececec !important
+
+                    #cordova-icon path
+                        fill: #E7E7E7
+
+                &.angular
+                    background-color: #b52e31 !important
+
+                    #micronaut-icon path
+                        fill: #e7e7e7
+
+                .project-title
+                    opacity: 1
+                    transform: translate3d(-50%, -400%, 0)
+
+                .project-description
+                    opacity: 1
+                    transform: translate3d(-50%, -50%, 0)
+
+                .project-technologies .svg-container
+                    opacity: 1
+                    transform: translate3d(0, -50%, 0)
